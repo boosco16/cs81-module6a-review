@@ -51,6 +51,19 @@ Playlist.prototype.listSongs = function() {
 // could probably do the same thing, like an else that logs
 // "No songs in this playlist yet."
 
+// NEW METHOD: lets you remove a specific song by name instead of only
+// being able to remove whatever is first
+Playlist.prototype.removeSong = function(songTitle) {
+  // indexOf finds where the song is in the array, or -1 if it's not there
+  const index = this.songs.indexOf(songTitle);
+  if (index === -1) {
+    console.log(songTitle, "is not in the playlist.");
+  } else {
+    // splice removes 1 item starting at that index
+    this.songs.splice(index, 1);
+    console.log("Removed:", songTitle);
+  }
+};
 
 let myMix = new Playlist("My Chill Mix");
 // "this" inside every method above refers to myMix specifically,
